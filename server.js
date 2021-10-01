@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 });
 
 // Configuring the database
-const dbConfig = require('./config/database.config.js');
+const dbConfig = require('./config/db.config.js');
 const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
@@ -39,7 +39,8 @@ mongoose.connect(dbConfig.url, {
 global.__basedir = __dirname;
 
 // Require Notes routes
-require('./app/routes/note.routes.js')(app);
+require('./App/routes/note.route.js')(app);
+require('./App/routes/user.route.js')(app);
 
 // listen for requests
 app.listen(4000, () => {
