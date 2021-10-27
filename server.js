@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const path = require('path');
 const app = express();
 
 // parse requests of content-type - application/x-www-form-urlencoded
@@ -41,6 +42,12 @@ global.__basedir = __dirname;
 // Require Notes routes
 require('./App/routes/note.route.js')(app);
 require('./App/routes/user.route.js')(app);
+require('./App/routes/transaksi.routes')(app);
+require('./App/routes/images.routes')(app);
+
+// express to access file statics
+const dirname = path.resolve();
+app.use("/resources/uploads/", express.static(path.join(dirname, "/resources/uploads/")));
 
 // listen for requests
 app.listen(4000, () => {
