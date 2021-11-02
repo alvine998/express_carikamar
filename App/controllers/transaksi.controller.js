@@ -30,7 +30,7 @@ exports.create = async (req, res) => {
         biaya: req.body.biaya,
         room: req.body.room,
         akomodasi: req.body.akomodasi,
-        status_pembayaran: '',
+        status_pembayaran: req.body.status_pembayaran,
         metode_pembayaran: '',
         images:''
     });
